@@ -37,7 +37,7 @@ Character.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'character',
+        modelName: 'characters',
     }
 );
 
