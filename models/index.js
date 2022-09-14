@@ -1,8 +1,10 @@
 const User = require('./User');
 const Character = require('./Characters');
-const Items = require('./Items')
+const Items = require('./Items');
 
-User.hasMany(Character);
+User.hasMany(Character, {
+    foreignKey: 'user_id',
+});
 
 Character.hasMany(Items, {
     foreignKey: 'item_id'
