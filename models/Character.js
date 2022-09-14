@@ -23,13 +23,21 @@ Character.init(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            references: {
+              model: 'user',
+              key: 'id',
+            },
+          },
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'Character',
+        modelName: 'character',
     }
 );
 
