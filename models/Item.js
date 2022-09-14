@@ -27,7 +27,7 @@ Item.init(
             type: DataTypes.INTEGER,
             allowNull: true,
             references: {
-              model: 'character',
+              model: 'characters',
               key: 'id',
             },
           },
