@@ -1,10 +1,11 @@
 const router = require('express').Router();
-const { User, Character } = require('../../models');
+const { User, Characters, Item } = require('../../models');
 
 router.get('/', async (req, res) => {
   try {
-    const characterData = await Character.findAll({
-      include: [{ model: Character }, { model: Item }] });
+    const characterData = await Characters.findAll({
+      include: { model: Item }
+    });
     res.status(200).json(characterData);
   } catch (err) {
     res.status(500).json(err);
@@ -14,10 +15,10 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   
     try {
-      const characterData = await Character.findByPk(req.params.id, {
+      const characterData = await Characters.findByPk(req.params.id, {
         include: [
           {
-            model: Character,
+            model: Characters,
             attributes: [
               'id',
               'character_name',
