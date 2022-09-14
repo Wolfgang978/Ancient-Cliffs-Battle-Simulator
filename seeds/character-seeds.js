@@ -1,4 +1,4 @@
-const { Character } = require('../models');
+const { Characters } = require('../models');
 
 const characterData = [
   {
@@ -23,6 +23,6 @@ const characterData = [
   }
 ]
 
-const seedCharacters = () => Character.bulkCreate(characterData);
+const seedCharacters = () => Characters.bulkCreate(characterData);
 
 module.exports = seedCharacters;
