@@ -23,7 +23,7 @@ Item.init(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        character_id: {
+        characters_id: {
             type: DataTypes.INTEGER,
             allowNull: true,
             references: {
