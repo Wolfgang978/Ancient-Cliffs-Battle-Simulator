@@ -17,28 +17,11 @@ router.get('/:id', async (req, res) => {
     try {
       const characterData = await Characters.findByPk(req.params.id, {
         include: [
-          {
-            model: Characters,
-            attributes: [
-              'id',
-              'character_name',
-              'description',
-              'hitpoints',
-              
-            ],
-            model: Item,
-            attributes: [
-              'id',
-              'item_name',
-              'description',
-              'strength',
-              
-            ],
-          },
+          { model: Characters, model: Item, },
         ],
       });
-      const gallery = characterData.get({ plain: true });
-      res.render('gallery', { gallery, loggedIn: req.session.loggedIn });
+      res.status(200).json(characterData);
+      
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
