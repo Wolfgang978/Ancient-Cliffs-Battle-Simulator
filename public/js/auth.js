@@ -37,6 +37,11 @@ const signupFormHandler = async (event) => {
       body: JSON.stringify({ username, password }),
       headers: { 'Content-Type': 'application/json' },
     });
+    req.session.save(() => {
+      req.session.loggedIn = true;
+
+      res.status(200).json(response);
+    });
 
     if (response.ok) {
       document.location.replace('/');

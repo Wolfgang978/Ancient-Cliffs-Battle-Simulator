@@ -1,6 +1,23 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+router.post('/signup', async (req, res) => {
+  try {
+    const { username, password } = req.body
+    const newUser = await User.create({ user_name:username, password })
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      
+      res.json({ user: newUser, message: 'Your account has been made!' });
+    });
+    
+
+
+  } catch (err) {
+    res.status(400).json(err);
+  }
+})
 
 router.post('/login', async (req, res) => {
   try {
@@ -36,17 +53,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.post('/signup', async (req, res) => {
-  try {
-    const { username, password } = req.body
-    const newUser = await User.create({ user_name:username, password })
-
-    res.json({ user: newUser, message: 'Your account has been made!' });
-
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
+;
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
