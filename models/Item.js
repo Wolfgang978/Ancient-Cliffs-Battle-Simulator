@@ -19,7 +19,7 @@ Item.init(
         description: {
             type: DataTypes.STRING,
         },
-        strength: {
+        damage: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
