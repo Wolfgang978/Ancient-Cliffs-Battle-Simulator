@@ -111,6 +111,16 @@ nav button:hover {
   margin: 25px;
   flex: 0 1 300px;
   color: var(--dark);
+  max-height: 17vw;
+  min-height: 15vw;
+  background-color: #607d8b;
+  border: none;
+}
+
+.cardAll {
+  margin: 25px;
+  flex: 0 1 300px;
+  color: var(--dark);
   max-height: 22vw;
   min-height: 15vw;
   background-color: #607d8b;
