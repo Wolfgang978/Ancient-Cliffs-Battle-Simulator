@@ -1,7 +1,16 @@
 
+const grabCharacter = async () => {
+  const characterOne = await fetch('/api/characters/1', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  console.log(characterOne)
+}
 
 
-function Character(character_name, character_class, strength, dexterity, hitpoints, armorClass, damage) {
+
+
+function Character (character_name, character_class, strength, dexterity, hitpoints, armorClass, damage) {
   this.character_name = character_name;
   this.character_class = character_class;
   this.strength = strength;
@@ -23,11 +32,11 @@ Character.prototype.printStats = function () {
 
 Character.prototype.isAlive = function () {
   if (this.hitpoints > 0) {
-    console.log(`${this.name} is still alive!`);
+    console.log(`${this.character_name} is still alive!`);
     console.log('\n-------------\n');
     return true;
   }
-  console.log(`${this.name} has died!`);
+  console.log(`${this.character_name} has died!`);
   return false;
 };
 
@@ -68,24 +77,7 @@ Character.prototype.levelUp = function () {
 const warrior = new Character('Crusher', 'Warrior', 18, 12, 75, 24, 12);
 const rogue = new Character('Dodger', 'Rogue', 15, 18, 60, 22, 10);
 
-// warrior.printStats();
-// rogue.printStats();
 
-// rogue.attack(warrior);
-
-// // TODO: Add a comment describing what you expect to see printed in the console
-// // calls the function. you will see all of the warriors current stats
-// warrior.printStats();
-
-// // TODO: Add a comment describing what you expect to see printed in the console
-// // checks to see if the warrior  character is alive we will see crusher is still alive
-// warrior.isAlive();
-
-// rogue.levelUp();
-
-// // TODO: Add a comment describing what you expect to see printed in the console
-// // prints the rogues stats after a level up. we will see age 24 strength 25 and hitpoints 75
-// rogue.printStats();
 let warriorTurn = true;
 
 
@@ -113,4 +105,4 @@ const turnInterval = setInterval(() => {
 console.log(`\n Turn Switch \n`)
   // Switch turns
   warriorTurn = !warriorTurn;
-}, 1000);
+}, 100);

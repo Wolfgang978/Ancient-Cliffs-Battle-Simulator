@@ -21,6 +21,7 @@ router.get('/:id', async (req, res) => {
         ],
       });
       res.status(200).json(characterData);
+      return characterData
       
     } catch (err) {
       console.log(err);
@@ -28,6 +29,7 @@ router.get('/:id', async (req, res) => {
     }
   }
 );
+
 router.post('/', async (req, res) => {
   try {
     const characterData = await Characters.create(req.body);
