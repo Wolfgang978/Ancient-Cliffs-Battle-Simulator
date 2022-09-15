@@ -1,25 +1,26 @@
-const character1 = require('')
 
 
-function Character(name, type, age, strength, hitpoints) {
-  this.name = name;
-  this.type = type;
-  this.age = age;
+
+function Character(character_name, character_class, strength, dexterity, hitpoints, armorClass, damage) {
+  this.character_name = character_name;
+  this.character_class = character_class;
   this.strength = strength;
+  this.dexterity = dexterity;
   this.hitpoints = hitpoints;
+  this.armorClass = armorClass;
+  this.damage = damage;
+
 }
 
-// TODO: Add a comment describing the purpose of `.prototype` in this method declaration
-// It allows us to access the prototype class and use it to create a function to display things in the previous object constructor without creating it in there
+
 Character.prototype.printStats = function () {
   console.log(
-    `Name: ${this.name}\nName: ${this.type}\nAge: ${this.age}\nStrength: ${this.strength}\nHitPoints: ${this.hitpoints}`
+    `Name: ${this.character_name}\nCharacter_class: ${this.character_class}\nDexterity: ${this.dexterity}\nStrength: ${this.strength}\nHitPoints: ${this.hitpoints}\nArmorClass: ${this.armorClass}\ndamage: ${this.damage}`
   );
   console.log('\n-------------\n');
 };
 
-// TODO: Add a comment describing the functionality of this method
-// A method to detirmine if the character is still alive based on hit points. returns a boolean
+
 Character.prototype.isAlive = function () {
   if (this.hitpoints > 0) {
     console.log(`${this.name} is still alive!`);
@@ -30,38 +31,86 @@ Character.prototype.isAlive = function () {
   return false;
 };
 
-// TODO: Add a comment describing the functionality of this method
-// Subtracts the strength from hitpoints.
+
 Character.prototype.attack = function (character2) {
-  character2.hitpoints -= this.strength;
+  let hitRoll = (Math.floor(Math.random() * 20) + 1)
+  
+
+  console.log(`Roll to hit: ${hitRoll}`)
+  if (hitRoll === 20) {
+    let damageTaken = 2 * (Math.floor(this.strength*.25) + (Math.floor(Math.random() * this.damage) + 1));
+    character2.hitpoints -= damageTaken
+    console.log(`damage: ${damageTaken}`)
+    console.log("critical hit")
+    return
+
+  } else if (hitRoll === 1) {
+   this.hitpoints -= 4 
+   console.log("critical failure")
+   return
+  } else if ((hitRoll + this.dexterity) > character2.armorClass) {
+    let damageTaken = Math.floor(this.strength*.25) + (Math.floor(Math.random() * this.damage) + 1);
+    character2.hitpoints -= damageTaken
+    console.log(`damage: ${damageTaken}`)
+  return
+  } 
+  console.log("miss")
+  return
 };
 
-// TODO: Add a comment describing the functionality of this method
-// Increases some of the stats in the character
+
 Character.prototype.levelUp = function () {
-  this.age += 1;
+  
   this.strength += 5;
   this.hitpoints += 25;
 };
 
-const warrior = new Character('Crusher', 'Warrior', 25, 10, 75);
-const rogue = new Character('Dodger', 'Rogue', 23, 20, 50);
+const warrior = new Character('Crusher', 'Warrior', 18, 12, 75, 24, 12);
+const rogue = new Character('Dodger', 'Rogue', 15, 18, 60, 22, 10);
 
-warrior.printStats();
-rogue.printStats();
+// warrior.printStats();
+// rogue.printStats();
 
-rogue.attack(warrior);
+// rogue.attack(warrior);
 
-// TODO: Add a comment describing what you expect to see printed in the console
-// calls the function. you will see all of the warriors current stats
-warrior.printStats();
+// // TODO: Add a comment describing what you expect to see printed in the console
+// // calls the function. you will see all of the warriors current stats
+// warrior.printStats();
 
-// TODO: Add a comment describing what you expect to see printed in the console
-// checks to see if the warrior  character is alive we will see crusher is still alive
-warrior.isAlive();
+// // TODO: Add a comment describing what you expect to see printed in the console
+// // checks to see if the warrior  character is alive we will see crusher is still alive
+// warrior.isAlive();
 
-rogue.levelUp();
+// rogue.levelUp();
 
-// TODO: Add a comment describing what you expect to see printed in the console
-// prints the rogues stats after a level up. we will see age 24 strength 25 and hitpoints 75
-rogue.printStats();
+// // TODO: Add a comment describing what you expect to see printed in the console
+// // prints the rogues stats after a level up. we will see age 24 strength 25 and hitpoints 75
+// rogue.printStats();
+let warriorTurn = true;
+
+
+const turnInterval = setInterval(() => {
+  // If either character is not alive, end the game
+  if (!warrior.isAlive() || !rogue.isAlive()) {
+    clearInterval(turnInterval);
+    console.log('Game over!');
+    if (!warrior.isAlive()) {
+      console.log("rogue Wins")
+    } else {
+      console.log("warrior Wins")
+    }
+  } else if (warriorTurn) {
+    console.log("Warrior turn")
+    console.log(`Rogue health: ${rogue.hitpoints}`);
+    warrior.attack(rogue);
+    console.log(`Rogue health: ${rogue.hitpoints}`);
+  } else {
+    console.log("Rogue turn")
+    console.log(`Warrior health: ${warrior.hitpoints}`);
+    rogue.attack(warrior);
+    console.log(`Warrior health: ${warrior.hitpoints}`);
+  }
+console.log(`\n Turn Switch \n`)
+  // Switch turns
+  warriorTurn = !warriorTurn;
+}, 1000);

@@ -16,10 +16,27 @@ Characters.init(
             unique: true,
             allowNull: false,
         },
+        character_class: {
+            type: DataTypes.STRING,
+            unique: true,
+            allowNull: false,
+        },
         description: {
             type: DataTypes.STRING,
         },
+        strength: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        dexterity: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
         hitpoints: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        armorClass: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
