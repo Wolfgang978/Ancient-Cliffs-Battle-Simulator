@@ -4,9 +4,12 @@ const { User, Characters, Item } = require('../../models');
 router.get('/', async (req, res) => {
   try {
     const characterData = await Characters.findAll({
-      include: { model: Item }
+      include: { model: Item }}
+      );
+    res.render('characters', {
+      characterData,
+      loggedIn: req.session.loggedIn,
     });
-    res.status(200).json(characterData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -21,7 +24,7 @@ router.get('/:id', async (req, res) => {
         ],
       });
       res.status(200).json(characterData);
-      return characterData
+      return characterData;
       
     } catch (err) {
       console.log(err);
