@@ -39,6 +39,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   flex-grow: 1;
+  justify-content: center;
 }
 
 aside {
@@ -87,10 +88,6 @@ nav a:hover {
   margin-left: 16px;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
 
 .painting {
   width: 50%;
@@ -107,12 +104,16 @@ img {
 
 /* CARDS */
 .card {
-  margin: 20px;
+  margin: 25px;
   flex: 0 1 300px;
-  border: 7px double var(--dark);
-  border-radius: 10px;
-  background-color: var(--light);
   color: var(--dark);
+  max-height: 15vw;
+  min-height: 15vw;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 .login-card {
@@ -161,4 +162,12 @@ img {
   flex-flow: column wrap;
   align-content: flex-start;
   align-items: center;
+}
+
+.imgCard {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  border: 8px double var(--dark);
+  border-top: none;
 }
