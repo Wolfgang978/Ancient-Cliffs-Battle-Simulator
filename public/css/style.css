@@ -111,8 +111,10 @@ nav button:hover {
   margin: 25px;
   flex: 0 1 300px;
   color: var(--dark);
-  max-height: 15vw;
+  max-height: 22vw;
   min-height: 15vw;
+  background-color: #607d8b;
+  border: none;
 }
 
 img {
@@ -174,4 +176,17 @@ img {
   object-fit: fill;
   border: 8px double var(--dark);
   border-top: none;
+}
+
+.charView {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-bottom: 5px outset var(--light);
+  background-color: #607d8b;
+}
+
+.headerFont {
+  font-size: 28px;
+  text-transform: none;
 }

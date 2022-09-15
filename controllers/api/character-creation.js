@@ -4,10 +4,15 @@ const { User, Characters, Item } = require('../../models');
 router.get('/', async (req, res) => {
   try {
     const characterData = await Characters.findAll({
-      include: { model: Item }}
-      );
+      include: { model: Item }
+    }
+    );
+    const charMetaData = characterData.map((newData) =>
+      newData.get({ plain: true })
+    );
+    console.log(charMetaData)
     res.render('characters', {
-      characterData,
+      charMetaData,
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
@@ -16,21 +21,21 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-  
-    try {
-      const characterData = await Characters.findByPk(req.params.id, {
-        include: [
-          { model: Characters, model: Item, },
-        ],
-      });
-      res.status(200).json(characterData);
-      return characterData;
-      
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
+
+  try {
+    const characterData = await Characters.findByPk(req.params.id, {
+      include: [
+        { model: Characters, model: Item, },
+      ],
+    });
+    res.status(200).json(characterData);
+    return characterData;
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
+}
 );
 
 router.post('/', async (req, res) => {

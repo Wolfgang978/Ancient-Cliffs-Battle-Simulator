@@ -14,7 +14,7 @@ const characterData = [
   {
     character_name: 'billy',
     character_class: 'Vagabond',
-    description: 'heavy armor melee character',
+    description: 'Heavy armor melee character',
     strength: 16,
     dexterity: 10,
     hitpoints: 100,
