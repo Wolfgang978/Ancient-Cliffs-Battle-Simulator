@@ -2,24 +2,41 @@ const { Characters } = require('../models');
 
 const characterData = [
   {
-    character_name: 'Samurai',
+    character_name: 'jack',
+    character_class: 'Samurai',
     description: 'Quick and agile melee character',
-    hitpoints: 100, 
+    strength: 11,
+    dexterity: 17,
+    hitpoints: 100,
+    armorClass: 22,
+
   },
   {
-    character_name: 'Vagabond',
+    character_name: 'billy',
+    character_class: 'Vagabond',
     description: 'heavy armor melee character',
-    hitpoints: 100, 
+    strength: 16,
+    dexterity: 10,
+    hitpoints: 100,
+    armorClass: 16, 
   },
   {
-    character_name: 'Mage',
+    character_name: 'korbyn',
+    character_class: 'Mage',
     description: 'Spell caster ranged character',
-    hitpoints: 100, 
+    strength: 6,
+    dexterity: 15,
+    hitpoints: 100,
+    armorClass: 15, 
   },
   {
-    character_name: 'Ranger',
+    character_name: 'max',
+    character_class: 'Ranger',
     description: 'Bow and arrow ranged character',
-    hitpoints: 100, 
+    strength: 8,
+    dexterity: 14,
+    hitpoints: 100,
+    armorClass: 18, 
   }
 ]
 

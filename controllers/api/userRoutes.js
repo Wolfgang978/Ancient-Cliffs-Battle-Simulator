@@ -5,7 +5,7 @@ const { User } = require('../../models');
 router.post('/login', async (req, res) => {
   try {
 
-    const userData = await User.findOne({ where: { email: req.body.email } });
+    const userData = await User.findOne({ where: { user_name: req.body.username } });
 
     if (!userData) {
       res
@@ -30,6 +30,18 @@ router.post('/login', async (req, res) => {
       
       res.json({ user: userData, message: 'You are now logged in!' });
     });
+
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.post('/signup', async (req, res) => {
+  try {
+    const { username, password } = req.body
+    const newUser = await User.create({ user_name:username, password })
+
+    res.json({ user: newUser, message: 'Your account has been made!' });
 
   } catch (err) {
     res.status(400).json(err);

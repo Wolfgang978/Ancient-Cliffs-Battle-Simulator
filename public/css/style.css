@@ -79,12 +79,16 @@ nav a:hover {
 .btn-no-style {
   background: none;
   border: none;
-  padding: 0;
+  padding: 14px 20px;
   cursor: pointer;
   text-decoration: none;
   font-size: 100%;
   transition: color 0.1s;
-  margin-left: 16px;
+}
+
+nav button:hover {
+  color: var(--secondary);
+  background-color: var(--dark);
 }
 
 img {
