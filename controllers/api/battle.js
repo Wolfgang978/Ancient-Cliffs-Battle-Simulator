@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Character, Item } = require('../../models');
 
+
 router.get('/:id', async (req, res) => {
   
   try {
