@@ -38,8 +38,11 @@ header {
 main {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
   flex-grow: 1;
   justify-content: center;
+  background-image: url(../imgPlaceholders/2182.webp);
+  background-size: cover;
 }
 
 nav {
@@ -85,20 +88,16 @@ nav button:hover {
   border: none;
 }
 
-.cardAll {
+.cardAll { 
   margin: 25px;
-  flex: 0 1 300px;
+  flex: 0 0 300px;
   color: var(--dark);
-  max-height: 22vw;
-  min-height: 15vw;
+  max-height: 70vh;
   background-color: #526b83;
   border: none;
+
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
 
 .login-card {
   margin: 0 0 20px 0;
@@ -123,11 +122,11 @@ img {
   border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
 }
 
-.card-body {
+/* .card-body {
   font-size: 1.4rem;
   text-align: center;
   font-weight: bold;
-}
+} */
 
 /* LAYOUT */
 .container {
@@ -147,13 +146,11 @@ img {
 
 .charView {
   width: 100%;
-  height: 100%;
+  height: 50%;
   object-fit: contain;
-  border-bottom: 5px outset var(--light);
-  background-color: #526b83;
 }
 
 .headerFont {
-  font-size: 28px;
+  font-size: 18px;
   text-transform: none;
 }
