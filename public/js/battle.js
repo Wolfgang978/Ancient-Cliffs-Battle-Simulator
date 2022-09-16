@@ -4,16 +4,19 @@ const divClass2 = document.querySelector(".theDivClass2")
 const divClass3 = document.querySelector(".theDivClass3")
 const divClass4 = document.querySelector(".theDivClass4")
 const divClass5 = document.querySelector(".theDivClass5")
+const divClass6 = document.querySelector(".theDivClass6")
 
 
 const grabCharacter = async () => {
-  const characterOne = await fetch('/api/characters/1', {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-  });
-  console.log(characterOne)
+  const characterOne = await fetch('/api/characters/1');
+
+  const character = await characterOne.json();
+  console.log(typeof character)
+  console.log("hellotherecharacterone")
+  console.log(character)
+  
 }
-console.log("hello")
+grabCharacter()
 
 
 
@@ -50,27 +53,27 @@ Character.prototype.isAlive = function () {
 
 Character.prototype.attack = function (character2) {
   let hitRoll = (Math.floor(Math.random() * 20) + 1)
-  
-
-  console.log(`Roll to hit: ${hitRoll}`)
+  divClass5.textContent = ""
+  divClass6.textContent = ""
+  divClass4.textContent = `Roll to hit: ${hitRoll}`
   if (hitRoll === 20) {
     let damageTaken = 2 * (Math.floor(this.strength*.25) + (Math.floor(Math.random() * this.damage) + 1));
     character2.hitpoints -= damageTaken
-    console.log(`damage: ${damageTaken}`)
-    console.log("critical hit")
+    divClass5.textContent = `damage: ${damageTaken}`
+    divClass6.textContent = "critical hit"
     return
 
   } else if (hitRoll === 1) {
    this.hitpoints -= 4 
-   console.log("critical failure")
+   divClass5.textContent = "critical failure"
    return
   } else if ((hitRoll + this.dexterity) > character2.armorClass) {
     let damageTaken = Math.floor(this.strength*.25) + (Math.floor(Math.random() * this.damage) + 1);
     character2.hitpoints -= damageTaken
-    console.log(`damage: ${damageTaken}`)
+    divClass6.textContent = `damage: ${damageTaken}`
   return
   } 
-  console.log("miss")
+  divClass5.textContent = `Miss`
   return
 };
 
