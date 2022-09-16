@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
     console.log(charMetaData)
     res.render('characters', {
       charMetaData,
-      loggedIn: req.session.loggedIn,
+      loggedIn: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
