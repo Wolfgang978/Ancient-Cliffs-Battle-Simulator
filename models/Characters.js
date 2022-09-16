@@ -18,7 +18,6 @@ Characters.init(
         },
         character_class: {
             type: DataTypes.STRING,
-            unique: true,
             allowNull: false,
         },
         description: {
