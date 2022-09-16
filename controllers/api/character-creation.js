@@ -42,6 +42,10 @@ router.post('/', async (req, res) => {
   try {
     const characterData = await Characters.create(req.body);
     res.status(200).json(characterData);
+    res.render('create', {
+      charMetaData,
+      loggedIn: req.session.logged_in,
+    });
   } catch (err) {
     res.status(400).json(err);
   }
