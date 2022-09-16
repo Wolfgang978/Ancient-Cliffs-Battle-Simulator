@@ -2,6 +2,19 @@ const router = require('express').Router();
 const { Character, Item } = require('../../models');
 
 
+router.get('/', async (req, res) => {
+  
+  
+    res.render('battle', {
+     
+      loggedIn: req.session.logged_in,
+    });
+    
+  
+}
+);
+
+
 router.get('/:id', async (req, res) => {
   
   try {
