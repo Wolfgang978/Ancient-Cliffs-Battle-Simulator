@@ -28,8 +28,13 @@ router.get('/:id', async (req, res) => {
         { model: Characters, model: Item, },
       ],
     });
+    
     res.status(200).json(characterData);
-    return characterData;
+    const character = characterData.get({ plain: true })
+    console.log("in the get")
+    console.log(character)
+
+    return character;
 
   } catch (err) {
     console.log(err);
