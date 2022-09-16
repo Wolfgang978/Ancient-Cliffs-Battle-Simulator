@@ -154,3 +154,11 @@ nav button:hover {
   font-size: 18px;
   text-transform: none;
 }
+.theDivClass1, .theDivClass2, .theDivClass3, .theDivClass4, .theDivClass5 {
+  padding: 5px;
+  
+}
+.battleSection {
+  display: flex;
+  flex-direction: column;
+}
