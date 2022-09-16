@@ -8,20 +8,19 @@ const characterData = [
     strength: 11,
     dexterity: 17,
     hitpoints: 100,
-    armorClass: 22,
-
+    armorClass: 16,
   },
   {
-    character_name: 'billy',
+    character_name: 'Ragnar',
     character_class: 'Vagabond',
     description: 'Heavy armor melee character',
     strength: 16,
     dexterity: 10,
     hitpoints: 100,
-    armorClass: 16, 
+    armorClass: 22, 
   },
   {
-    character_name: 'korbyn',
+    character_name: 'Albus',
     character_class: 'Mage',
     description: 'Spell caster ranged character',
     strength: 6,
@@ -30,7 +29,7 @@ const characterData = [
     armorClass: 15, 
   },
   {
-    character_name: 'max',
+    character_name: 'Arondir',
     character_class: 'Ranger',
     description: 'Bow and arrow ranged character',
     strength: 8,
