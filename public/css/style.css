@@ -1,10 +1,10 @@
 :root {
-  --primary: #3d5852;
-  --secondary: #86938f;
-  --tertiary: #5e877f;
-  --quatrinary: #6c6b67;
-  --light: #e3e4e3;
-  --dark: #182c23;
+  --primary: #A81610;
+  --secondary: #3385ff;
+  --tertiary: #00004d;
+  --quatrinary: #d9d9d9;
+  --light: #e6ffff;
+  --dark: #00001a;
   --error: rgb(228, 46, 1);
   --border-radius: 0.3rem;
 }
@@ -42,14 +42,6 @@ main {
   justify-content: center;
 }
 
-aside {
-  flex: 0;
-  background-color: var(--tertiary);
-  padding: 80px;
-  text-align: left;
-  color: var(--light);
-}
-
 nav {
   display: flex;
   background-color: var(--secondary);
@@ -67,16 +59,6 @@ nav a:hover {
   background-color: var(--dark);
 }
 
-.gallery {
-  flex: 4;
-  background-color: #fff;
-  padding: 50px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-}
-
 .btn-no-style {
   background: none;
   border: none;
@@ -92,20 +74,6 @@ nav button:hover {
   background-color: var(--dark);
 }
 
-
-.painting {
-  width: 50%;
-  background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin-bottom: 25px;
-}
-
-.painting-details {
-  text-align: center;
-  padding: 10px 20px;
-  font-weight: bold;
-}
-
 /* CARDS */
 .card {
   margin: 25px;
@@ -113,7 +81,7 @@ nav button:hover {
   color: var(--dark);
   max-height: 17vw;
   min-height: 15vw;
-  background-color: #607d8b;
+  background-color: #526b83;
   border: none;
 }
 
@@ -123,7 +91,7 @@ nav button:hover {
   color: var(--dark);
   max-height: 22vw;
   min-height: 15vw;
-  background-color: #607d8b;
+  background-color: #526b83;
   border: none;
 }
 
@@ -141,7 +109,7 @@ img {
   border-radius: var(--border-radius);
   border-style: double;
   border-width: thick;
-  background-color: #577a7c;
+  background-color: var(--tertiary);
   color: var(--light);
 }
 
@@ -159,17 +127,6 @@ img {
   font-size: 1.4rem;
   text-align: center;
   font-weight: bold;
-}
-
-.gallery-name {
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  text-shadow: 2px 2px 5px var(--secondary);
-  border: 10px groove var(--light);
-  padding-top: 30px;
-  padding-bottom: 30px;
-  padding-right: 100px;
-  padding-left: 100px;
 }
 
 /* LAYOUT */
@@ -193,7 +150,7 @@ img {
   height: 100%;
   object-fit: contain;
   border-bottom: 5px outset var(--light);
-  background-color: #607d8b;
+  background-color: #526b83;
 }
 
 .headerFont {
