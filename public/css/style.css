@@ -31,7 +31,7 @@ a:visited {
 header {
   padding: 40px;
   text-align: center;
-  background: var(--primary);
+  background: #293135;
   color: var(--light);
 }
 
@@ -47,7 +47,7 @@ main {
 
 nav {
   display: flex;
-  background-color: var(--secondary);
+  background-color: rgb(151, 97, 93);;
 }
 
 nav a {
@@ -156,3 +156,26 @@ nav button:hover {
   display: flex;
   flex-direction: column;
 }
+
+.createForm {
+  display: grid;
+  color: cornsilk;
+  justify-items: center;
+  align-content: space-between;
+  justify-content: center;
+}
+
+.formEdit {
+  background-color: rgb(24, 34, 30, 0.7);
+  margin-top: 60px;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.inputEdit {
+  margin: 1.5px;
+  background-color: floralwhite;
+}
+
+

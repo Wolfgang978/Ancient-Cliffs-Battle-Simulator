@@ -31,7 +31,7 @@ const newCharHandler = async (event) => {
       if (response.ok) {
         document.location.replace('characters');
       } else {
-        alert('Failed to create Character');
+        alert('Failed to create Character. Check input values');
       }
     }
 

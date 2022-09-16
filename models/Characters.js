@@ -26,18 +26,34 @@ Characters.init(
         strength: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            validate: {
+                min: 5,
+                max: 20,               
+              }
         },
         dexterity: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            validate: {
+                min: 10,
+                max: 20,               
+              }
         },
         hitpoints: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            validate: {
+                min: 80,
+                max: 100,               
+              }
         },
         armorClass: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            validate: {
+                min: 10,
+                max: 25,               
+              }
         },
         user_id: {
             type: DataTypes.INTEGER,

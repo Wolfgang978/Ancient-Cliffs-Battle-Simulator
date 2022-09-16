@@ -1,7 +1,8 @@
- <main>
-        <form class="newCharForm" action="/action_page.php">
+ <main class="createForm">
+    <div class="formEdit">
+        <form class="newCharForm " action="/action_page.php">
             <label for="charName">Characters Name:</label>
-            <input type="text" id="charName" name="charName" value=""><br>
+            <input class="inputEdit" type="text" id="charName" name="charName" value=""><br>
             <br>
             <form action="/action_page.php">
                 <label for="charClass">Choose your character's class:</label>
@@ -10,33 +11,33 @@
                   <option value="warrior">Warrior</option>
                   <option value="archer">Elven Archer</option>
                   <option value="assassin">Assassin</option>
-                  <option value="hgihknight">High Knight</option>
+                  <option value="highknight">High Knight</option>
                   <option value="orc">Orc</option>
                 </select>
-                <!-- maybe need another submit button?? -->
               </form>
               <label for="description">Write a short description of you character:</label>
-            <input type="text" id="description" name="description" value="">
-            <br>
-              <label for="strength">Give a strength of you character(select between 5-20):</label>
-            <input type="text" id="strength" name="strength" value="">
+            <input class="inputEdit" type="text" id="description" name="description" value="">
             <br>
 
-              </form>
+              <label for="strength">Give a strength of you character(select between 5-20):</label>
+            <input class="inputEdit" type="text" id="strength" name="strength" value="">
+            <br>
+
               <label for="dexterity">Give a dexterity of you character(select between 10-20):</label>
-            <input type="text" id="dexterity" name="dexterity" value="">
+            <input class="inputEdit" type="text" id="dexterity" name="dexterity" value="">
             <br>
 
               <label for="hitpoints">Select a hitpoints level of you character(select between 80-100):</label>
-            <input type="text" id="hitpoints" name="hitpoints" value="">
+            <input class="inputEdit" type="text" id="hitpoints" name="hitpoints" value="">
             <br>
 
               <label for="armorClass">Select a armor class level of you character(select between 10-25):</label>
-            <input type="text" id="armorClass" name="armorClass" value="">
+            <input class="inputEdit" type="text" id="armorClass" name="armorClass" value="">
             <br>
               
             <button class="charButton">Finish!</button>
           </form>
+        </div>
     </main>
 
     <script src="/js/create.js"></script>
