@@ -148,15 +148,20 @@ nav button:hover {
   font-size: 18px;
   text-transform: none;
 }
-.theDivClass1, .theDivClass2, .theDivClass3, .theDivClass4, .theDivClass5 {
+.theDivClass1, .theDivClass2, .theDivClass3, .theDivClass4, .theDivClass5 .theDivClass6 {
   padding: 5px;
-  color: white;
+  color: black;
   
 }
 .battleSection {
   display: flex;
   flex-direction: column;
+  background-color: white;
 }
+.formClass, #characterSelectButton, .labelCharacter, #playButton {
+  visibility: hidden;
+}
+
 
 .createForm {
   display: grid;
