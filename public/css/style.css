@@ -150,6 +150,7 @@ nav button:hover {
 }
 .theDivClass1, .theDivClass2, .theDivClass3, .theDivClass4, .theDivClass5 {
   padding: 5px;
+  color: white;
   
 }
 .battleSection {

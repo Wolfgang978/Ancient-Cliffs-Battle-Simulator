@@ -20,6 +20,26 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/characters', async (req, res) => {
+
+  try {
+    const characterData = await Characters.findAll({
+      include: { model: Item }
+      
+    });
+    
+    res.status(200).json(characterData);
+    // const allCharacters = characterData.get({ plain: true })
+    
+
+    return characterData;
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+}
+);
 router.get('/:id', async (req, res) => {
 
   try {
@@ -35,6 +55,24 @@ router.get('/:id', async (req, res) => {
     console.log(character)
 
     return character;
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+}
+);
+router.get('/characters/:id', async (req, res) => {
+
+  try {
+    const characterData = await Characters.findByPk(req.params.id, {
+      include: [
+        { model: Characters, model: Item, },
+      ],
+    });
+    
+    res.status(200).json(characterData);
+    
 
   } catch (err) {
     console.log(err);
