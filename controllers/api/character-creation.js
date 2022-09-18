@@ -1,12 +1,19 @@
 const router = require('express').Router();
+const Sequelize = require('sequelize');
 const { User, Characters, Item } = require('../../models');
+const { or } =  Sequelize.Op;
 
 router.get('/', async (req, res) => {
   try {
+    const userId = req.session.user_id
     const characterData = await Characters.findAll({
-      include: { model: Item }
-    }
-    );
+      include: { model: Item },
+      where: {
+        user_id: {
+          [or]: [userId, null]
+        }
+      }
+    });
     const charMetaData = characterData.map((newData) =>
       newData.get({ plain: true })
     );
