@@ -10,12 +10,14 @@ const divClass6 = document.querySelector(".theDivClass6")
 const divClass7 = document.querySelector(".theDivClass7")
 const divClass8 = document.querySelector(".theDivClass8")
 const divClass9 = document.querySelector(".theDivClass9")
-
+const labelCharacter = document.querySelector(".labelCharacter")
 const charClass1 = document.querySelector("#charClass1")
+
 
 var character = {}
 const grabCharacter = async () => {
-  const characterOne = await fetch('/api/characters/5');
+  
+  const characterOne = await fetch("/api/characters/1");
 
   character = await characterOne.json();
  
@@ -38,13 +40,19 @@ grabCharacter2()
 
 const characterSelectFunction = function() {
 let option = []
-  for (let i = 0; i <= allCharacters.length; i++) {
+let value = []
+  for (let i = 0; i < allCharacters.length; i++) {
     option[i] = document.createElement("option")
     option[i].textContent = `${allCharacters[i].character_name}`
+    option[i].setAttribute("value", i)
     charClass1.appendChild(option[i])
   }
+  characterSelectionStartButton.setAttribute("style", "visibility: hidden;")
+  characterSelectButton.setAttribute("style", "visibility: visible;")
+  charClass1.setAttribute("style", "visibility: visible;")
+  labelCharacter.setAttribute("style", "visibility: visible;")
+ 
   
-
 }
 
 
@@ -68,47 +76,47 @@ Character.prototype.printStats = function () {
   };
   
   
-Character.prototype.isAlive = function () {
-  if (this.hitpoints > 0) {
-    console.log(`${this.character_name} is still alive!`);
-    console.log('\n-------------\n');
-    return true;
-  }
-  console.log(`${this.character_name} has died!`);
-  return false;
-};
-
-
-Character.prototype.attack = function (character2) {
-  let hitRoll = (Math.floor(Math.random() * 20) + 1)
-  divClass5.textContent = ""
-  divClass6.textContent = ""
-  divClass4.textContent = `Roll to hit: ${hitRoll}`
-  if (hitRoll === 20) {
-    let damageTaken = 2 * (Math.floor(this.strength*.25) + (Math.floor(Math.random() * this.damage) + 1));
-    character2.hitpoints -= damageTaken
-    divClass5.textContent = `damage: ${damageTaken}`
-    divClass6.textContent = "critical hit"
-    return
-    
-  } else if (hitRoll === 1) {
-    this.hitpoints -= 4 
-    divClass5.textContent = "critical failure"
-
-    return
-  } else if ((hitRoll + this.dexterity) > character2.armorClass) {
-    let damageTaken = Math.floor(this.strength*.25) + (Math.floor(Math.random() * this.damage) + 1);
-    character2.hitpoints -= damageTaken
-    divClass5.textContent = `damage: ${damageTaken}`
-    return
-  } 
-  divClass5.textContent = `Miss`
-  return
-};
-
-
-Character.prototype.levelUp = function () {
+  Character.prototype.isAlive = function () {
+    if (this.hitpoints > 0) {
+      console.log(`${this.character_name} is still alive!`);
+      console.log('\n-------------\n');
+      return true;
+    }
+    console.log(`${this.character_name} has died!`);
+    return false;
+  };
   
+  
+  Character.prototype.attack = function (character2) {
+    let hitRoll = (Math.floor(Math.random() * 20) + 1)
+    divClass5.textContent = ""
+    divClass6.textContent = ""
+    divClass4.textContent = `Roll to hit: ${hitRoll}`
+    if (hitRoll === 20) {
+      let damageTaken = 2 * (Math.floor(this.strength*.25) + (Math.floor(Math.random() * this.damage) + 1));
+      character2.hitpoints -= damageTaken
+      divClass5.textContent = `damage: ${damageTaken}`
+      divClass6.textContent = "critical hit"
+      return
+      
+    } else if (hitRoll === 1) {
+      this.hitpoints -= 4 
+      divClass5.textContent = "critical failure"
+      
+      return
+    } else if ((hitRoll + this.dexterity) > character2.armorClass) {
+      let damageTaken = Math.floor(this.strength*.25) + (Math.floor(Math.random() * this.damage) + 1);
+      character2.hitpoints -= damageTaken
+      divClass5.textContent = `damage: ${damageTaken}`
+      return
+    } 
+    divClass5.textContent = `Miss`
+    return
+  };
+  
+  
+  Character.prototype.levelUp = function () {
+    
   this.strength += 5;
   this.hitpoints += 25;
 };
@@ -122,14 +130,16 @@ let warriorTurn = true;
 let characterSelect = false
 const turnInterval = function() {
   if (!characterSelect) {
+    console.log(charClass12)
 
-    characterSelect = new Character(character.character_name, character.character_class, character.strength, character.dexterity, character.hitpoints, character.armorClass, 12);
+    characterSelect = new Character(allCharacters[charClass12].character_name, allCharacters[charClass12].character_class, allCharacters[charClass12].strength, allCharacters[charClass12].dexterity, allCharacters[charClass12].hitpoints, allCharacters[charClass12].armorClass, 12);
+    // characterSelect = new Character(character.character_name, character.character_class, character.strength, character.dexterity, character.hitpoints, character.armorClass, 12);
     // characterSelect = new Character(character.character_name, character.character_class, character.strength, character.dexterity, character.hitpoints, character.armorClass, character.items[0].damage);
     console.log(characterSelect)
   }
   // If either character is not alive, end the game
-
- if (warriorTurn) {
+  
+  if (warriorTurn) {
     divClass1.textContent = "Warrior turn"
     console.log("Warrior turn")
     divClass2.textContent = `${characterSelect.character_name} health before: ${characterSelect.hitpoints}`
@@ -162,31 +172,22 @@ const turnInterval = function() {
     }
   }
 };
+var charClass12 = 0
+const hidingandshowing = function() {
+  charClass12 = document.querySelector('#charClass1').value;
+  characterSelectionStartButton.setAttribute("style", "visibility: hidden;")
+  characterSelectButton.setAttribute("style", "visibility: hidden;")
+  
+  charClass1.setAttribute("style", "visibility: hidden;")
+  labelCharacter.setAttribute("style", "visibility: hidden;")
+  playButton.setAttribute("style", "visibility: visible;")
+
+  console.log(charClass12)
+}
+
+
+
+characterSelectButton.addEventListener("click", hidingandshowing)
 playButton.addEventListener("click", turnInterval)
 characterSelectionStartButton.addEventListener("click", characterSelectFunction)
 
-// const turnInterval = setInterval(() => {
-  //   // If either character is not alive, end the game
-  //   if (!warrior.isAlive() || !rogue.isAlive()) {
-    //     clearInterval(turnInterval);
-//     console.log('Game over!');
-//     if (!warrior.isAlive()) {
-//       console.log("rogue Wins")
-//     } else {
-//       console.log("warrior Wins")
-//     }
-//   } else if (warriorTurn) {
-//     console.log("Warrior turn")
-//     console.log(`Rogue health: ${rogue.hitpoints}`);
-//     warrior.attack(rogue);
-//     console.log(`Rogue health: ${rogue.hitpoints}`);
-//   } else {
-//     console.log("Rogue turn")
-//     console.log(`Warrior health: ${warrior.hitpoints}`);
-//     rogue.attack(warrior);
-//     console.log(`Warrior health: ${warrior.hitpoints}`);
-//   }
-// console.log(`\n Turn Switch \n`)
-//   // Switch turns
-//   warriorTurn = !warriorTurn;
-// }, 100);
