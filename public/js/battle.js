@@ -1,23 +1,51 @@
+const characterSelectButton = document.querySelector("#characterSelectButton")
 const playButton = document.querySelector("#playButton")
+const characterSelectionStartButton = document.querySelector("#characterSelectionStartButton")
 const divClass1 = document.querySelector(".theDivClass1")
 const divClass2 = document.querySelector(".theDivClass2")
 const divClass3 = document.querySelector(".theDivClass3")
 const divClass4 = document.querySelector(".theDivClass4")
 const divClass5 = document.querySelector(".theDivClass5")
 const divClass6 = document.querySelector(".theDivClass6")
+const divClass7 = document.querySelector(".theDivClass7")
+const divClass8 = document.querySelector(".theDivClass8")
+const divClass9 = document.querySelector(".theDivClass9")
 
+const charClass1 = document.querySelector("#charClass1")
 
+var character = {}
 const grabCharacter = async () => {
-  const characterOne = await fetch('/api/characters/1');
+  const characterOne = await fetch('/api/characters/5');
 
-  const character = await characterOne.json();
-  console.log(typeof character)
-  console.log("hellotherecharacterone")
-  console.log(character)
+  character = await characterOne.json();
+ 
+
+
+  
+}
+var allCharacters = []
+const grabCharacter2 = async () => {
+  const alloftheCharacters = await fetch('/api/characters/characters');
+
+  allCharacters = await alloftheCharacters.json();
+  console.log(typeof allCharacters)
+  console.log("this one is the different one")
+  console.log(allCharacters)
   
 }
 grabCharacter()
+grabCharacter2()
 
+const characterSelectFunction = function() {
+let option = []
+  for (let i = 0; i <= allCharacters.length; i++) {
+    option[i] = document.createElement("option")
+    option[i].textContent = `${allCharacters[i].character_name}`
+    charClass1.appendChild(option[i])
+  }
+  
+
+}
 
 
 function Character (character_name, character_class, strength, dexterity, hitpoints, armorClass, damage) {
@@ -28,18 +56,18 @@ function Character (character_name, character_class, strength, dexterity, hitpoi
   this.hitpoints = hitpoints;
   this.armorClass = armorClass;
   this.damage = damage;
-
+  
 }
 
 
 Character.prototype.printStats = function () {
   console.log(
     `Name: ${this.character_name}\nCharacter_class: ${this.character_class}\nDexterity: ${this.dexterity}\nStrength: ${this.strength}\nHitPoints: ${this.hitpoints}\nArmorClass: ${this.armorClass}\ndamage: ${this.damage}`
-  );
-  console.log('\n-------------\n');
-};
-
-
+    );
+    console.log('\n-------------\n');
+  };
+  
+  
 Character.prototype.isAlive = function () {
   if (this.hitpoints > 0) {
     console.log(`${this.character_name} is still alive!`);
@@ -62,16 +90,17 @@ Character.prototype.attack = function (character2) {
     divClass5.textContent = `damage: ${damageTaken}`
     divClass6.textContent = "critical hit"
     return
-
+    
   } else if (hitRoll === 1) {
-   this.hitpoints -= 4 
-   divClass5.textContent = "critical failure"
-   return
+    this.hitpoints -= 4 
+    divClass5.textContent = "critical failure"
+
+    return
   } else if ((hitRoll + this.dexterity) > character2.armorClass) {
     let damageTaken = Math.floor(this.strength*.25) + (Math.floor(Math.random() * this.damage) + 1);
     character2.hitpoints -= damageTaken
-    divClass6.textContent = `damage: ${damageTaken}`
-  return
+    divClass5.textContent = `damage: ${damageTaken}`
+    return
   } 
   divClass5.textContent = `Miss`
   return
@@ -84,16 +113,46 @@ Character.prototype.levelUp = function () {
   this.hitpoints += 25;
 };
 
+
 const warrior = new Character('Crusher', 'Warrior', 18, 12, 75, 24, 12);
 const rogue = new Character('Dodger', 'Rogue', 15, 18, 60, 22, 10);
 
-
 let warriorTurn = true;
 
-
+let characterSelect = false
 const turnInterval = function() {
+  if (!characterSelect) {
+
+    characterSelect = new Character(character.character_name, character.character_class, character.strength, character.dexterity, character.hitpoints, character.armorClass, 12);
+    // characterSelect = new Character(character.character_name, character.character_class, character.strength, character.dexterity, character.hitpoints, character.armorClass, character.items[0].damage);
+    console.log(characterSelect)
+  }
   // If either character is not alive, end the game
-  if (!warrior.isAlive() || !rogue.isAlive()) {
+
+ if (warriorTurn) {
+    divClass1.textContent = "Warrior turn"
+    console.log("Warrior turn")
+    divClass2.textContent = `${characterSelect.character_name} health before: ${characterSelect.hitpoints}`
+    console.log(`${characterSelect.character_name} health: ${characterSelect.hitpoints}`);
+    warrior.attack(characterSelect);
+    divClass3.textContent = `${characterSelect.character_name} health after: ${characterSelect.hitpoints}`
+    
+    console.log(`${characterSelect.character_name} health: ${characterSelect.hitpoints}`);
+  } else {
+    divClass1.textContent = `${characterSelect.character_name} turn`
+    console.log("Rogue turn")
+    divClass2.textContent = `Warrior health before: ${warrior.hitpoints}`
+    console.log(`Warrior health: ${warrior.hitpoints}`);
+    characterSelect.attack(warrior);
+    divClass3.textContent = `Warrior health after: ${warrior.hitpoints}`
+    console.log(`Warrior health: ${warrior.hitpoints}`);
+  }
+  
+  console.log(`\n Turn Switch \n`)
+  
+  // Switch turns
+  warriorTurn = !warriorTurn;
+  if (!warrior.isAlive() || !characterSelect.isAlive()) {
     clearInterval(turnInterval);
     console.log('Game over!');
     if (!warrior.isAlive()) {
@@ -101,35 +160,15 @@ const turnInterval = function() {
     } else {
       console.log("warrior Wins")
     }
-  } else if (warriorTurn) {
-    divClass1.textContent = "Warrior turn"
-    console.log("Warrior turn")
-    divClass2.textContent = `Rogue health before: ${rogue.hitpoints}`
-    console.log(`Rogue health: ${rogue.hitpoints}`);
-    warrior.attack(rogue);
-    divClass3.textContent = `Rogue health after: ${rogue.hitpoints}`
-    console.log(`Rogue health: ${rogue.hitpoints}`);
-  } else {
-    divClass1.textContent = "Rogue turn"
-    console.log("Rogue turn")
-    divClass2.textContent = `Warrior health before: ${warrior.hitpoints}`
-    console.log(`Warrior health: ${warrior.hitpoints}`);
-    rogue.attack(warrior);
-    divClass3.textContent = `Warrior health after: ${warrior.hitpoints}`
-    console.log(`Warrior health: ${warrior.hitpoints}`);
   }
-
-console.log(`\n Turn Switch \n`)
-
-// Switch turns
-warriorTurn = !warriorTurn;
 };
 playButton.addEventListener("click", turnInterval)
+characterSelectionStartButton.addEventListener("click", characterSelectFunction)
 
 // const turnInterval = setInterval(() => {
-//   // If either character is not alive, end the game
-//   if (!warrior.isAlive() || !rogue.isAlive()) {
-//     clearInterval(turnInterval);
+  //   // If either character is not alive, end the game
+  //   if (!warrior.isAlive() || !rogue.isAlive()) {
+    //     clearInterval(turnInterval);
 //     console.log('Game over!');
 //     if (!warrior.isAlive()) {
 //       console.log("rogue Wins")
