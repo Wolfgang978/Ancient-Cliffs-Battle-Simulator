@@ -31,7 +31,7 @@ a:visited {
 header {
   padding: 40px;
   text-align: center;
-  background: #293135;
+  background: #906360;;
   color: var(--light);
 }
 
@@ -47,7 +47,7 @@ main {
 
 nav {
   display: flex;
-  background-color: rgb(151, 97, 93);;
+  background-color: var(--secondary);
 }
 
 nav a {
@@ -177,6 +177,12 @@ nav button:hover {
 .inputEdit {
   margin: 1.5px;
   background-color: floralwhite;
+}
+
+.pEdit {
+  font-size: 15px;
+    margin: 10px 10px 1rem;
+    line-height: 10px;
 }
 
 

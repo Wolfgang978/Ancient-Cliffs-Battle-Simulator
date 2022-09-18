@@ -1,12 +1,13 @@
 <section class="cardAll">
     <a>
     <header class="headerFont">{{character_name}} the {{character_class}}</header>
-        <p>{{description}}</p>
+        <p class="pEdit">{{description}}</p>
         
-        <p>Strength: {{strength}}</p>
-        <p>Hitpoints: {{hitpoints}}hp</p>
-        <p>Armor Class: {{armorClass}}</p>
-        <p>Dexterity: {{dexterity}}</p>
+        <p class="pEdit">Strength: {{strength}}</p>
+        <p class="pEdit">Hitpoints: {{hitpoints}}hp</p>
+        <p class="pEdit">Armor Class: {{armorClass}}</p>
+        <p class="pEdit">Dexterity: {{dexterity}}</p>
+        <p class="pEdit">Weapon: {{items.[0].item_name}} (+{{items.[0].damage}} Damage)</p>
     <img class="charView" src="/images/{{character_class}}.jpg"> 
     </a>
 </section>

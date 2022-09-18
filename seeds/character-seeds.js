@@ -2,7 +2,7 @@ const { Characters } = require('../models');
 
 const characterData = [
   {
-    character_name: 'jack',
+    character_name: 'Jack',
     character_class: 'Samurai',
     description: 'Quick and agile melee character',
     strength: 11,
