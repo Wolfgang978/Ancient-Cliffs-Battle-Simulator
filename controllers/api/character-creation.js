@@ -21,7 +21,6 @@ router.get('/', async (req, res) => {
         item: itemData.map((item) => item.get({plain: true})).find((item) => item.id === character.get('character_item').get('item_id'))
       }
     });
-    console.log(characters);
     res.render('characters', {
       characters,
       loggedIn: req.session.logged_in,
@@ -67,8 +66,6 @@ router.get('/:id', async (req, res) => {
     
     res.status(200).json(characterData);
     const character = characterData.get({ plain: true })
-    console.log("in the get")
-    console.log(character)
 
     return character;
 
