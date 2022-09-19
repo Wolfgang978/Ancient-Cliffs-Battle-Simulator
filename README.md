@@ -65,7 +65,7 @@ Start the command link prompt by typing "node index.js" into the terminal. The p
 Permission to use this application is granted under the MIT license. https://choosealicense.com/licenses/mit/
 
 ## Created By
-[github link: korbynd23](https://github.com/korbynd23)
+[github link: korbynd23](https://github.com/Wolfgang978/Project-2-crazy-fun)
 Contributers: https://github.com/Wolfgang978, https://github.com/tylerneal27, 
 
 
