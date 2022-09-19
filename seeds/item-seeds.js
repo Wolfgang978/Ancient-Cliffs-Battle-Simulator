@@ -4,26 +4,42 @@ const itemData = [
   {
     item_name: 'Katana',
     description: 'Quick and agile melee item',
-    damage: 15,
-    characters_id: 1 
+    damage: 15
   },
   {
     item_name: 'long sword',
     description: 'versatile melee item',
-    damage: 10, 
-    characters_id: 2
+    damage: 10 
   },
   {
-    item_name: 'staff',
+    item_name: 'Staff',
     description: 'helps mage conjure magical abilities',
-    damage: 18, 
-    characters_id: 3 
+    damage: 18 
   },
   {
     item_name: 'long bow',
     description: 'Bow and arrow for accuracy at range',
-    damage: 15,
-    characters_id: 4 
+    damage: 15
+  },
+  {
+    item_name: 'Morningstar',
+    description: 'Bludgeoning melee weapon',
+    damage: 13
+  },
+  {
+    item_name: 'Battleaxe',
+    description: 'Slashing melee weapon',
+    damage: 16
+  },
+  {
+    item_name: 'Spear',
+    description: 'Throwable peirce melee weapon',
+    damage: 17
+  },
+  {
+    item_name: 'Sling',
+    description: 'Bludgeoning ranged weapon',
+    damage: 14
   }
 ]
 
