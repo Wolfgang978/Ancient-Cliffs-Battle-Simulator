@@ -116,9 +116,9 @@ let characterSelect = false
 const turnInterval = function() {
   if (!characterSelect) {
     
-
-    character2Select = new Character(allCharacters[charClass123].character_name, allCharacters[charClass123].character_class, allCharacters[charClass123].strength, allCharacters[charClass123].dexterity, allCharacters[charClass123].hitpoints, allCharacters[charClass123].armorClass, 12);
-    characterSelect = new Character(allCharacters[charClass12].character_name, allCharacters[charClass12].character_class, allCharacters[charClass12].strength, allCharacters[charClass12].dexterity, allCharacters[charClass12].hitpoints, allCharacters[charClass12].armorClass, 12);
+    
+    character2Select = new Character(allCharacters[charClass123].character_name, allCharacters[charClass123].character_class, allCharacters[charClass123].strength, allCharacters[charClass123].dexterity, allCharacters[charClass123].hitpoints, allCharacters[charClass123].armorClass, 15);
+    characterSelect = new Character(allCharacters[charClass12].character_name, allCharacters[charClass12].character_class, allCharacters[charClass12].strength, allCharacters[charClass12].dexterity, allCharacters[charClass12].hitpoints, allCharacters[charClass12].armorClass, 15);
    
   }
  
