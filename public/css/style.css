@@ -158,7 +158,7 @@ nav button:hover {
   flex-direction: column;
   background-color: white;
 }
-.formClass, #characterSelectButton, .labelCharacter, #playButton {
+.formClass, #characterSelectButton, .labelCharacter, #playButton, .labelCharacter2, #charClass2, #characterSelectButton2{
   visibility: hidden;
 }
 
