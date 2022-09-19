@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
         strength: req.body.strength,
         dexterity: req.body.dexterity,
         hitpoints: req.body.hitpoints,
-        armorClass: req.body.dexterity,
+        armorClass: req.body.armorClass,
         user_id: req.session.user_id
       });
       res.render('characters', {
