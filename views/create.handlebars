@@ -2,20 +2,27 @@
     <div class="formEdit">
         <form class="newCharForm " action="/action_page.php">
             <label for="charName">Characters Name:</label>
-            <input class="inputEdit" type="text" id="charName" name="charName" value=""><br>
+            <input class="inputEdit" type="text" id="charName" name="charName" value="">
+            <br><br>
+            <label for="charClass">Choose your character's class:</label>
+            <select id="charClass" name="charClass">
+              <option value="rogue">Rogue</option>
+              <option value="warrior">Warrior</option>
+              <option value="archer">Elven Archer</option>
+              <option value="assassin">Assassin</option>
+              <option value="highknight">High Knight</option>
+              <option value="orc">Orc</option>
+            </select>
             <br>
-            <form action="/action_page.php">
-                <label for="charClass">Choose your character's class:</label>
-                <select id="charClass" name="charClass">
-                  <option value="rogue">Rogue</option>
-                  <option value="warrior">Warrior</option>
-                  <option value="archer">Elven Archer</option>
-                  <option value="assassin">Assassin</option>
-                  <option value="highknight">High Knight</option>
-                  <option value="orc">Orc</option>
-                </select>
-              </form>
-              <label for="description">Write a short description of you character:</label>
+            <label for="charItem">Choose your character's Item:</label>
+            <select id="charItem" name="charItem">
+              {{!-- Loop goes here --}}
+              {{#each items as |item|}}
+                <option value="{{item.id}}">{{item.item_name}}</option>
+              {{/each}}
+            </select>
+            <br>
+            <label for="description">Write a short description of you character:</label>
             <input class="inputEdit" type="text" id="description" name="description" value="">
             <br>
 

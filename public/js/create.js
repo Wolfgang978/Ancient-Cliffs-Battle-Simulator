@@ -5,6 +5,7 @@ const newCharHandler = async (event) => {
   
     const charName = document.querySelector('#charName').value;
     const charClass = document.querySelector('#charClass').value;
+    const charItem = document.querySelector('#charItem').value;
     const description = document.querySelector('#description').value;
     const strength = document.querySelector('#strength').value;
     const dexterity = document.querySelector('#dexterity').value;
@@ -16,6 +17,7 @@ const newCharHandler = async (event) => {
         body: JSON.stringify({
           charName,
           charClass,
+          charItem,
           description,
           strength,
           dexterity,
