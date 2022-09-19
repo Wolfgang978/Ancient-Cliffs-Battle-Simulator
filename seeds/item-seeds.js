@@ -7,7 +7,7 @@ const itemData = [
     damage: 15
   },
   {
-    item_name: 'long sword',
+    item_name: 'Long Sword',
     description: 'versatile melee item',
     damage: 10 
   },
@@ -17,7 +17,7 @@ const itemData = [
     damage: 18 
   },
   {
-    item_name: 'long bow',
+    item_name: 'Long Bow',
     description: 'Bow and arrow for accuracy at range',
     damage: 15
   },

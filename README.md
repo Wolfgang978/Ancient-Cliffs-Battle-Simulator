@@ -1,13 +1,11 @@
-# Project-2-crazy-fun
+# Ancient Cliffs Battle Simulator
 
-# 12 SQL: Employee Tracker
 
 ## Table of Contents
 
 - [Description](#description)
-- [Acceptance Criteria](#acceptancecriteria)
 - [Refrences](#references)
-- [Videos](#videos)
+- [App](#application-screen-shot)
 - [Licenses](#license)
 - [Author Info](#license)
 
@@ -15,47 +13,37 @@
 
 
 
+
+
 ## Description
-This applications purpose is to take in users input and provide them questions that help track their employee, department and role information.
 
-## AcceptanceCriteria
+This application was created with the intent to create a simple fun-minded game that allows users to create characters that will return when they sign in and have the ability to battle with their characters.
 
-```md
-GIVEN a command-line application that accepts user input
-WHEN I start the application
-THEN I am presented with the following options: view all departments, view all roles, view all employees, add a department, add a role, add an employee, and update an employee role
-WHEN I choose to view all departments
-THEN I am presented with a formatted table showing department names and department ids
-WHEN I choose to view all roles
-THEN I am presented with the job title, role id, the department that role belongs to, and the salary for that role
-WHEN I choose to view all employees
-THEN I am presented with a formatted table showing employee data, including employee ids, first names, last names, job titles, departments, salaries, and managers that the employees report to
-WHEN I choose to add a department
-THEN I am prompted to enter the name of the department and that department is added to the database
-WHEN I choose to add a role
-THEN I am prompted to enter the name, salary, and department for the role and that role is added to the database
-WHEN I choose to add an employee
-THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
-WHEN I choose to update an employee role
-THEN I am prompted to select an employee to update and their new role and this information is updated in the database 
-```
+
+
+
+## Application Screen Shot
+
+![app screenshot](./public/imgReadme/pageDisplay.png)
+
 
 
 ## Install Instructions
-none
+N/A
+
+
+
 
 ## Credits
-N/a
+N/A
+
+
 
 ## Instructions/How to use
 
 Link to Heroku Deployment: https://ancient-cliffs-85623.herokuapp.com/
 
-Start the command link prompt by typing "node index.js" into the terminal. The prompt will then ask you to select from multiple questions: View all departments, view all roles, view all employees, add a department, add a role, add an employee, update an employee's role or update an employee's manager. When a command is select it will fire the corresponding function that will provide you with whats needed to complete the desired task. 'View all' selections will immediately display a table of your desired selection. After finishing your desired task it will return to the main prompt, you can then select another function or select quit to close the server.
-
-## Videos:
-
-
+Upon arrival of the main page you'll be prompted to either sign in or signup. After signing in, the homepage will be render and there is three options to select - View All Characters (which includes 4 hardcoded characters), Create A Character and Battle. For the Create A Character you'll be presented with multiple questions to generate skills and attributes, clicking 'submit' saves your created characters and attaches it to your user, the page will then be redirected to View All Characters where your newley created character will be shown along with the others. The battle function invokes a "Dungeon & Dragons like" attack sequence that is based off a random dice roll. 
 
 
 
@@ -64,9 +52,11 @@ Start the command link prompt by typing "node index.js" into the terminal. The p
 ## License
 Permission to use this application is granted under the MIT license. https://choosealicense.com/licenses/mit/
 
+
+
+
 ## Created By
-[github link: korbynd23](https://github.com/Wolfgang978/Project-2-crazy-fun)
-Contributers: https://github.com/Wolfgang978, https://github.com/tylerneal27, 
+[github link: Ancient Cliffs](https://github.com/Wolfgang978/Ancient-Cliffs-Battle-Simulator)
+Contributers: https://github.com/Wolfgang978, https://github.com/tylerneal27, https://github.com/Korbynd23
 
 
-#### If you have any further questions on this application please feel free to contact me at kdicari24@gmail.com
