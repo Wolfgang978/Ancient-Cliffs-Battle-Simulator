@@ -38,6 +38,4 @@ const newCharHandler = async (event) => {
     }
 
 
-    //   .querySelector('.newCharForm')
-
       charButton.addEventListener("click", newCharHandler);

@@ -23,9 +23,6 @@ const grabCharacter2 = async () => {
   const alloftheCharacters = await fetch('/api/characters/characters');
 
   allCharacters = await alloftheCharacters.json();
-  console.log(typeof allCharacters)
-  console.log("this one is the different one")
-  console.log(allCharacters)
   
 }
 
@@ -147,7 +144,7 @@ const turnInterval = function() {
     clearInterval(turnInterval);
     
     if (!character2Select.isAlive()) {
-      console.log("rogue Wins")
+
       playButton.setAttribute("style", "visibility: hidden;")
       divClass6.textContent = `${characterSelect.character_name} had ${characterSelect.hitpoints} hitpoints left`
       divClass7.textContent = `Chosen character ${characterSelect.character_name} wins. Good job!`
@@ -171,7 +168,6 @@ const hidingandshowing = function() {
   charClass2.setAttribute("style", "visibility: visible;")
   labelCharacter2.setAttribute("style", "visibility: visible;")
 
-  console.log(charClass12)
 }
 const hidingandshowing2 = function() {
   charClass123 = document.querySelector('#charClass2').value;
@@ -182,7 +178,6 @@ const hidingandshowing2 = function() {
   labelCharacter2.setAttribute("style", "visibility: hidden;")
   playButton.setAttribute("style", "visibility: visible;")
 
-  console.log(charClass12)
 }
 
 
