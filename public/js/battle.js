@@ -167,8 +167,14 @@ const turnInterval = function() {
     console.log('Game over!');
     if (!warrior.isAlive()) {
       console.log("rogue Wins")
+      playButton.setAttribute("style", "visibility: hidden;")
+      divClass6.textContent = `Health left: ${characterSelect.hitpoints}`
+      divClass7.textContent = `${characterSelect.character_name} wins. Good job!`
     } else {
       console.log("warrior Wins")
+      playButton.setAttribute("style", "visibility: hidden;")
+      divClass6.textContent = `Health left: ${warrior.hitpoints}`
+      divClass7.textContent = `Warrior wins. Sad job!`
     }
   }
 };
