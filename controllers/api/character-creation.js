@@ -1,25 +1,29 @@
 const router = require('express').Router();
 const Sequelize = require('sequelize');
-const { User, Characters, Item } = require('../../models');
+const { CharacterItem, Characters, Item } = require('../../models');
 const { or } =  Sequelize.Op;
 
 router.get('/', async (req, res) => {
   try {
     const userId = req.session.user_id
     const characterData = await Characters.findAll({
-      include: { model: Item },
+      include: { model: CharacterItem },
       where: {
         user_id: {
           [or]: [userId, null]
         }
       }
     });
-    const charMetaData = characterData.map((newData) =>
-      newData.get({ plain: true })
-    );
-    console.log(charMetaData)
+    const itemData = await Item.findAll();
+    const characters = characterData.map((character) => {
+      return {
+        ...character.get({ plain: true }),
+        item: itemData.map((item) => item.get({plain: true})).find((item) => item.id === character.get('character_item').get('item_id'))
+      }
+    });
+    console.log(characters);
     res.render('characters', {
-      charMetaData,
+      characters,
       loggedIn: req.session.logged_in,
     });
   } catch (err) {
@@ -30,9 +34,14 @@ router.get('/', async (req, res) => {
 router.get('/characters', async (req, res) => {
 
   try {
+    const userId = req.session.user_id
     const characterData = await Characters.findAll({
-      include: { model: Item }
-      
+      include: { model: CharacterItem },
+      where: {
+        user_id: {
+          [or]: [userId, null]
+        }
+      }
     });
     
     res.status(200).json(characterData);
@@ -52,7 +61,7 @@ router.get('/:id', async (req, res) => {
   try {
     const characterData = await Characters.findByPk(req.params.id, {
       include: [
-        { model: Characters, model: Item, },
+        { model: CharacterItem },
       ],
     });
     
@@ -74,7 +83,7 @@ router.get('/characters/:id', async (req, res) => {
   try {
     const characterData = await Characters.findByPk(req.params.id, {
       include: [
-        { model: Characters, model: Item, },
+        { model: CharacterItem },
       ],
     });
     

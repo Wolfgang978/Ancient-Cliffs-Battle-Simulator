@@ -22,15 +22,7 @@ Item.init(
         damage: {
             type: DataTypes.INTEGER,
             allowNull: false,
-        },
-        characters_id: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-            references: {
-              model: 'characters',
-              key: 'id',
-            },
-          },
+        }
     },
     {
         sequelize,
